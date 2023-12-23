@@ -1,13 +1,31 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { url } from 'inspector';
+import RSSParser from 'rss-parser';
 
-type Data = {
-  name: string
+const parseUrl= "http://netflixtechblog.com/feed"
+const parser= new RSSParser();
+const parse = async (url:string) => {
+	const feed = await parser.parseURL(url);
+	
+	console.log(feed.title)
 }
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
-}
+parse(feedURL)
+
+// type CustomFeed = {foo: string};
+// type CustomItem = {bar: number};
+
+// const parser: Parser<CustomFeed, CustomItem> = new Parser({
+//   customFields: {
+//     feed: ['foo', 'baz'],
+//     item: ['bar']
+//   }
+// });
+(async () => {
+
+  const feed = await parser.parseURL('https://www.reddit.com/.rss');
+  console.log(feed.title); // feed will have a `foo` property, type as a string
+
+  feed.items.forEach(item => {
+    console.log(item.title + ':' + item.link) // item will have a `bar` property type as a number
+  });
+})();

@@ -12,3 +12,8 @@ Let's build an RSS feed reader! Most news websites, blogs, podcasts, maintain a 
 - [ ] Create the basic layout
 - [ ] Render the `rss` feed
 - [ ] Add function where user can input their `url`
+
+## Tech/framework used
+Built with NextJS, Typescript
+
+
